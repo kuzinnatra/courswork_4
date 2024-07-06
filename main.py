@@ -1,15 +1,20 @@
 from src.connection_api import HH
+from src.json_class import GetJson
 
 
-
-test1 = HH()
-
+get_hh = HH()
+jsonfiletest = GetJson()
 quantity_vacancies = input("введите желаемое количество отображаемых вакансий от 1 до 100\n")
-name_vacancies = input("введите название желаемой профессии\n")
-if int(quantity_vacancies) >100:
-    print("вы указали желаемое число вакансий больше 100. Нужно указать от 1 до 100")
+name_vacancies = input("введите название профессии\n")
+if int(quantity_vacancies) > 100:
+    print("Превышено количество отображаемых вакансий (максимум 100)")
     exit()
-if test1.get_vacancies(int(quantity_vacancies), name_vacancies) == []:
+if get_hh.get_vacancies(int(quantity_vacancies), name_vacancies) == []:
     print('Желаемые вакансии не найдены')
 else:
-    print(test1.get_vacancies(int(quantity_vacancies), name_vacancies))
+    vac = get_hh.get_vacancies(int(quantity_vacancies), name_vacancies)
+    jsonfiletest.write_data(vac)
+    vacanc = jsonfiletest.get_vacancies()
+    for i in vacanc:
+        print(f'{i}\n')
+
