@@ -6,12 +6,12 @@ class AbstractJsonClass(ABC):
     @abstractmethod
     def write_data(self, vac):
         pass
-    # @abstractmethod
-    # def get_vacancies(self):
-    #     pass
-    # @abstractmethod
-    # def delete_vacancy(self):
-    #     pass
+    @abstractmethod
+    def get_vacancies(self):
+        pass
+    @abstractmethod
+    def delete_vacancy(self):
+        pass
 
 
 class GetJson(AbstractJsonClass):
@@ -20,7 +20,7 @@ class GetJson(AbstractJsonClass):
         self.filename = f"data/{filename}"
     def write_data(self, vac):
         """записываем данные в файл"""
-        with open(self.filename, 'a') as f:
+        with open(self.filename, 'w') as f:
             json.dump(vac, f, ensure_ascii=False, indent=4)
 
     def get_vacancies(self):
@@ -38,6 +38,10 @@ class GetJson(AbstractJsonClass):
 
         return vacancies
 
+    def delete_vacancy(self):
+        """очистить файл с вакансиями"""
+        with open(self.filename, 'w'):
+            pass
 
 
 
