@@ -4,9 +4,9 @@ class Vacancy:
         self.name = name
         self.url = url
         self.employer = employer
-        self.__validate_salary(salary)
+        self.validate_salary(salary)
 
-    def __validate_salary(self, salary):
+    def validate_salary(self, salary):
         if salary is None:
             self.salary_from = 0
             self.salary_to = 0
@@ -34,6 +34,3 @@ class Vacancy:
 url: {self.url}
 Название компании: {self.employer}"""
 
-    def __lt__(self, other):
-        """сортировка"""
-        return (self.salary_from, self.salary_to) < (other.salary_from, other.salary_to)
