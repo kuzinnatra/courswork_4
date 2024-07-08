@@ -4,8 +4,8 @@ from src.json_class import GetJson
 
 get_hh = HH()
 my_vacancy = GetJson()
-quantity_vacancies = input("введите желаемое количество отображаемых вакансий от 1 до 100\n")
-name_vacancies = input("введите ключевые слова для поиска (например название профессии)\n")
+quantity_vacancies = input("Введите желаемое количество отображаемых вакансий от 1 до 100:\n")
+name_vacancies = input("Введите ключевые слова для поиска (например название профессии):\n")
 if int(quantity_vacancies) > 100:
     print("Превышено количество отображаемых вакансий (максимум 100)")
     exit()
@@ -18,7 +18,7 @@ else:
     for i in vacanc:
         print(f'{i}\n')
 
-    top_vac = int(input('Сколько вакансий показать с самой большой зарплатой?\nВведите число\n'))
+    top_vac = int(input('Сколько вакансий показать с самой большой зарплатой?\nВведите число:\n'))
 
     vacanc.sort(key=lambda vacanc: vacanc.salary_from, reverse=True) #сортируем список вакансий по з/п
 
