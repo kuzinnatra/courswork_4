@@ -17,6 +17,9 @@ class HH(AbstractApi):
     def __init__(self):
         self.__url = "https://api.hh.ru/vacancies"
 
+    def get_url(self):
+        return self.__url
+
     def get_response(self):
         response = requests.get(self.__url)
         return response
@@ -27,10 +30,3 @@ class HH(AbstractApi):
         params = {'text': self.text, 'page': 0, 'per_page': self.per_page}
         response = requests.get(self.__url, params)
         return response.json()['items']
-
-
-
-
-
-
-
