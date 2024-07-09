@@ -15,6 +15,7 @@ class AbstractJsonClass(ABC):
 
 
 class GetJson(AbstractJsonClass):
+    """класс для работы с файлом vacancies.json"""
     def __init__(self, filename="vacancies.json"):
         """указываем файл для сохранения данных """
         self.filename = f"data/{filename}"
