@@ -18,15 +18,15 @@ class GetJson(AbstractJsonClass):
     """класс для работы с файлом vacancies.json"""
     def __init__(self, filename="vacancies.json"):
         """указываем файл для сохранения данных """
-        self.filename = f"data/{filename}"
+        self.__filename = f"data/{filename}"
     def write_data(self, vac):
         """записываем данные в файл"""
-        with open(self.filename, 'w') as f:
+        with open(self.__filename, 'w') as f:
             json.dump(vac, f, ensure_ascii=False, indent=4)
 
     def get_vacancies(self):
         """отображаем вакансии по выбранным критериям"""
-        with open(self.filename, 'r') as f:
+        with open(self.__filename, 'r') as f:
             data = json.load(f)
         vacancies = []
         for vacancy in data:
@@ -41,9 +41,6 @@ class GetJson(AbstractJsonClass):
 
     def delete_vacancy(self):
         """очистить файл с вакансиями"""
-        with open(self.filename, 'w'):
+        with open(self.__filename, 'w'):
             pass
-
-
-
 
