@@ -6,6 +6,12 @@ class Vacancy:
         self.employer = employer
         self.validate_salary(salary)
 
+    def __str__(self):
+        return f"""Профессия: {self.name}
+Зарплата от {self.salary_from} руб. до {self.salary_to} руб.
+url: {self.url}
+Название компании: {self.employer}"""
+
     def validate_salary(self, salary):
         if salary is None:
             self.salary_from = 0
@@ -28,9 +34,11 @@ class Vacancy:
                 self.salary_to = int(self.salary_to * 0.2)
 
 
-    def __str__(self):
-        return f"""Профессия: {self.name}
-Зарплата от {self.salary_from} руб. до {self.salary_to} руб.
-url: {self.url}
-Название компании: {self.employer}"""
+    def __gt__(self, other):
+        if type(other) is Vacancy:
+            return self.salary_from > other.salary_from
+
+    def __lt__(self, other):
+        if type(other) is Vacancy:
+            return self.salary_from < other.salary_from
 
