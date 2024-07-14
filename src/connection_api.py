@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class AbstractApi(ABC):
     @abstractmethod
-    def get_response(self, per_page: int, text: str = ''):
+    def _get_response(self, per_page: int, text: str = ''):
         pass
     @abstractmethod
     def get_vacancies(self, per_page, text):
@@ -20,7 +20,7 @@ class HH(AbstractApi):
     def get_url(self):
         return self.__url
 
-    def get_response(self, per_page: int, text: str = ''):
+    def _get_response(self, per_page: int, text: str = ''):
         self.per_page = per_page
         self.text = text
         params = {'text': self.text, 'page': 0, 'per_page': self.per_page}
@@ -30,5 +30,5 @@ class HH(AbstractApi):
     def get_vacancies(self, per_page: int, text: str = ''):
         self.per_page = per_page
         self.text = text
-        response = self.get_response(self.per_page, self.text)
+        response = self._get_response(self.per_page, self.text)
         return response.json()['items']
